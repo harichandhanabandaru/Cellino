@@ -1,0 +1,12 @@
+resources:
+  - ../base
+
+namespace: aims-dev
+secretGenerator:
+  - name: run-mgmt-svc
+    behavior: merge
+    envs:
+    - dev-secrets.env
+
+patches:
+  - hpa.yaml

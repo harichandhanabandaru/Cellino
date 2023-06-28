@@ -1,0 +1,54 @@
+extend type Query {
+  Colonies(imageEventId: ID!, quality: Quality): [Colony]!
+  colonyMetrics(imageEventId: ID!): ColonyMetrics
+}
+
+extend type Mutation {
+  updateColony(id: ID!, ops: [PatchOperation!]!): Colony
+  createColonyAndCluster(
+    colonyData: CreateColonyRequest!
+    clusterData: CreateClusterRequest!
+  ): ColonyAndCluster
+}
+
+input CreateColonyRequest {
+  name: String
+  wellId: ID!
+  isSelected: Boolean
+  isDeleted: Boolean
+  quality: Quality
+  outline: JSON
+}
+
+type ColonyMetrics {
+  imageEventId: ID!
+  colonyCountByQuality: [ColonyCountByQuality]
+}
+
+type ColonyCountByQuality {
+  quality: Quality
+  count: Int
+}
+
+type ColonyAndCluster {
+  colony: Colony
+  cluster: Cluster
+}
+
+type Colony {
+  id: ID
+  name: String
+  well: Well
+  isSelected: Boolean
+  type: Type
+  clonality: Clonality
+  quality: Quality
+  isActive: Boolean
+  outline: JSON
+}
+
+enum Type {
+  MANUAL
+  SYSTEMGENERATED
+  EDITED
+}

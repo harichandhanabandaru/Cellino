@@ -1,0 +1,26 @@
+extend type Query {
+  phases: [Phase]!
+  phase(id: ID!): Phase!
+}
+
+type Phase {
+  id: ID
+  phaseName: String
+  phaseInitiationRules: [PhaseRule]
+  otherRules: [PhaseRule]
+  order: Int
+  plateData(
+    reviewerIds: [ID]
+    page: Int
+    runIds: [ID]
+    size: Int
+    plateNameList: [String]
+    passageList: [String]
+  ): PaginatedPlates
+}
+
+type PhaseRule {
+  key: String
+  value: String
+  operator: String
+}

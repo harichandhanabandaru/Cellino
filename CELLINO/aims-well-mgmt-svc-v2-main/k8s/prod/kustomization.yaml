@@ -1,0 +1,12 @@
+resources:
+  - ../base
+  - serviceaccount.yaml
+
+namespace: aims
+secretGenerator:
+  - name: well-mgmt-svc-v2
+    behavior: merge
+    envs:
+    - prod-secrets.env
+patches:
+  - deployment.yaml

@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-mgmt-svc
+  labels:
+    app.kubernetes.io/name: user-mgmt-svc
+    envirnoment: developers
+spec:
+  template:
+    spec:
+      initContainers:
+      - name: user-mgmt-svc-migration
+        image: us-central1-docker.pkg.dev/project-aims-dev/docker-registry-aims-dev/aims-user-mgmt-svc
+      containers:
+      - name: user-mgmt-svc
+        image: us-central1-docker.pkg.dev/project-aims-dev/docker-registry-aims-dev/aims-user-mgmt-svc

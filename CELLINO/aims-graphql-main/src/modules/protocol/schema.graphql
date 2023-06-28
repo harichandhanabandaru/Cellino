@@ -1,0 +1,23 @@
+extend type Query {
+  protocols(category: String): PaginatedProtocols
+}
+
+type PaginatedProtocols {
+  content: [Protocol]
+  pageInfo: PageInformation
+}
+
+type Protocol {
+  id: ID
+  name: String
+  settings: JSON
+  protocolDefinition: ProtocolDefinition
+}
+
+type ProtocolDefinition {
+  id: ID
+}
+
+input CreateProtocolRequest {
+  name: String
+}

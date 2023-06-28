@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aims-x-dev
+  labels:
+    environment: developers
+    owner: sai
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.regional-static-ip-name: "aims-x-dev-ext-ip"
+    networking.gke.io/managed-certificates: aims-x-dev-crt
+    cloud.google.com/backend-config: '{"default": "aims-iap-backend"}'
+spec:
+  rules:
+    - host: x.dev.cellinobio.app
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+            pathType: Prefix

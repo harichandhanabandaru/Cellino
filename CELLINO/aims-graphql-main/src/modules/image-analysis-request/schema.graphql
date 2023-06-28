@@ -1,0 +1,27 @@
+type ImageAnalysisRequest {
+  id: ID!
+  name: String
+  statusCode: String
+  isDeveloperMode: Boolean
+  inputParameters: JSON
+  protocol: Protocol
+  imageEvent: ImageEvent
+  statusDetails: String
+}
+
+extend type Query {
+  imageAnalysisRequest: String!
+}
+
+extend type Mutation {
+  triggerImageAnalysis(
+    triggerAnalysisRequest: TriggerImageAnalysisRequest!
+  ): ImageAnalysisRequest!
+}
+
+input TriggerImageAnalysisRequest {
+  protocol: CreateProtocolRequest
+  developerMode: Boolean
+  context: JSON
+  settings: JSON
+}

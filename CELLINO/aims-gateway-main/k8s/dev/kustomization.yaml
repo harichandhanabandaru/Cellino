@@ -1,0 +1,6 @@
+resources:
+  - ../base
+
+namespace: aims-dev
+patches:
+  - hpa.yaml

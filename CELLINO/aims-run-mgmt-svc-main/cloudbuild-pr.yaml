@@ -1,0 +1,49 @@
+steps:
+  - id: Update sonar properties
+    name: bash
+    secretEnv: ['SONAR_TOKEN']
+    entrypoint: bash
+    args:
+    - -c
+    - |
+      cat << EOF >> sonar-project.properties
+      sonar.login=$$SONAR_TOKEN
+      EOF
+
+  - id: Install the dependencies
+    name: node
+    entrypoint: npm
+    args: ['ci']
+    
+  - id: Run unit test cases
+    name: node
+    entrypoint: 'npm'
+    args: ['test']
+
+  - name: 'gcr.io/project-aims-dev/sonar-scanner'
+    args: ['-Dsonar.projectKey=cellino-biotech_aims-run-mgmt-svc', '-Dsonar.organization=cellino-biotech']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+    - -c
+    - |
+      export DOCKER_BUILDKIT=1
+      
+      docker pull $_IMAGE_NAME:latest
+
+      docker build -t $_IMAGE_NAME:$COMMIT_SHA \
+              -t $_IMAGE_NAME:latest \
+              --cache-from $_IMAGE_NAME:latest \
+              .
+
+timeout: 3600s 
+options:
+  logging: GCS_ONLY
+logsBucket: gs://aims_cloud_build_logs
+substitutions:
+  _IMAGE_NAME: us-central1-docker.pkg.dev/project-aims-dev/docker-registry-aims-dev/aims-run-mgmt-svc
+availableSecrets:
+  secretManager:
+  - versionName: projects/$PROJECT_ID/secrets/sonar_token/versions/1
+    env: 'SONAR_TOKEN'

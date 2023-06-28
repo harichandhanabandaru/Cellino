@@ -1,0 +1,30 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+
+profiles:
+- name: developers
+  activation:
+    - command: dev
+  deploy:
+    kustomize:
+      paths: 
+      - k8s/developers/
+    statusCheck: true
+
+- name: dev
+  deploy:
+    kustomize:
+      paths: 
+      - k8s/dev/
+
+- name: qa
+  deploy:
+    kustomize:
+      paths: 
+      - k8s/qa/
+
+- name: prod
+  deploy:
+    kustomize:
+      paths: 
+      - k8s/prod/

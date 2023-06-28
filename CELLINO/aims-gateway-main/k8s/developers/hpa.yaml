@@ -1,0 +1,10 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: aims-gateway
+  labels:
+    app.kubernetes.io/name: aims-gateway
+    app.kubernetes.io/instance: gateway
+spec:
+  minReplicas: 1
+  maxReplicas: 1

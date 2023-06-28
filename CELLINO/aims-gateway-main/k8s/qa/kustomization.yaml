@@ -1,0 +1,7 @@
+resources:
+  - ../base
+
+namespace: aims-qa
+patches:
+  - hpa.yaml
+  

@@ -1,0 +1,63 @@
+{
+  "name": "aims-graphql",
+  "version": "1.0.0",
+  "description": "The Apollo GraphQL server for Cellino AIMS",
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">=18.12"
+  },
+  "type": "module",
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.yml",
+    "compile": "npm run generate && tsc",
+    "postinstall": "npm run generate",
+    "copy:gql:files": "copyfiles --up 1 src/**/*.graphql dist/",
+    "build": "npm run generate && tsc -project tsconfig.json && npm run copy:gql:files",
+    "build:local": "npm run generate && tsc -project ./tsconfig.local.json && npm run copy:gql:files",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/index.js",
+    "local": "npm run build:local && env-cmd -f .env.local node ./dist/index.js",
+    "lint": "eslint src --ext .js"
+  },
+  "author": "Cellino Developers",
+  "license": "NOT LICENSED",
+  "dependencies": {
+    "@apollo/datasource-rest": "^5.0.1",
+    "@apollo/server": "^4.3.0",
+    "dataloader": "^2.1.0",
+    "google-auth-library": "^8.1.1",
+    "graphql": "^16.3.0",
+    "graphql-tag": "^2.12.6",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/typescript": "^2.8.7",
+    "@graphql-codegen/typescript-resolvers": "^2.7.12",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "copyfiles": "^2.4.1",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

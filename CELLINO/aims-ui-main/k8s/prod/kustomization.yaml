@@ -1,0 +1,9 @@
+resources:
+  - ../base
+
+namespace: aims
+configMapGenerator:
+  - name: ui
+    behavior: merge
+    envs:
+      - ui.env

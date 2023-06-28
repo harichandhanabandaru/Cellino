@@ -1,0 +1,30 @@
+extend type Query {
+  events(plateId: ID, eventType: String): [Event]
+}
+type Event {
+  id: ID!
+  name: String
+  eventType: EventType
+  plateId: ID
+  startedAt: String
+  completedAt: String
+  createdAt: String
+  createdBy: String
+  modifiedAt: String
+  modifiedBy: String
+  metadata: String
+}
+type EventMetadata {
+  notes: String
+  settings: String
+}
+enum EventType {
+  DELIVERY
+  SEEDING
+  IMAGING
+  MEDIACHANGE
+  ASSAYS
+  SCANNING
+  TRANSFER
+  ANALYSIS
+}

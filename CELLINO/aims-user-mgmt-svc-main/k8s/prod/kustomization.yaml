@@ -1,0 +1,9 @@
+resources:
+  - ../base
+
+namespace: aims
+secretGenerator:
+  - name: user-mgmt-svc
+    behavior: merge
+    envs:
+    - prod-secrets.env

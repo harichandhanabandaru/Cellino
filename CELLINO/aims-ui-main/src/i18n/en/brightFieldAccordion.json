@@ -1,0 +1,20 @@
+{
+  "brightfield": "Brightfield",
+  "format": "Format",
+  "captureStartTime": "Capture start time",
+  "captureEndTime": "Capture end time",
+  "instrumentName": "Instrument name",
+  "zMin": "Z min",
+  "zMax": "Z max",
+  "zStep": "Z step",
+  "numberOfZStep": "Number of z step",
+  "magnification": "Magnification",
+  "width": "Width",
+  "height": "Height",
+  "pixelSize": "Pixel size",
+  "pixelSizeUnit": "Pixel size unit",
+  "exposureTime": "Exposure time",
+  "protocalID": "Protocol ID",
+  "Illuminator": "Illuminator",
+  "numberOfRawDataFiles": "Number of raw data files"
+}

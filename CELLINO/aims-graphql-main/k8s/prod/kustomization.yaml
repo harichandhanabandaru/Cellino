@@ -1,0 +1,9 @@
+resources:
+  - ../base
+
+namespace: aims
+secretGenerator:
+  - name: graphql
+    behavior: replace
+    envs:
+      - prod-secrets.env

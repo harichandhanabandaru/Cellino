@@ -1,0 +1,27 @@
+resources:
+  - ../base
+  - certificate.yaml
+  - ingress.yaml
+  - git@github.com:cellino-biotech/aims-shared-kustomize.git/k8s/developers
+patches:
+  - hpa.yaml
+  - deployment.yaml
+namespace: sai
+secretGenerator:
+  - name: user-mgmt-svc
+    behavior: replace
+    envs:
+      - user.secrets.env
+  - name: run-mgmt-svc
+    behavior: replace
+    envs:
+      - run-secrets.env
+  - name: well-mgmt-svc
+    behavior: replace
+    envs:
+    - well-secrets.env
+  - name: oauth-consent-secret
+    behavior: replace
+    envs:
+      - consent.env
+  

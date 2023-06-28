@@ -1,0 +1,12 @@
+resources:
+  - ../base
+
+secretGenerator:
+  - name: well-mgmt-svc-v2
+    behavior: replace
+    envs:
+    - developers-secrets.env
+
+patches:
+  - hpa.yaml
+  - deployment.yaml

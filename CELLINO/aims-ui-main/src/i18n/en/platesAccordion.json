@@ -1,0 +1,13 @@
+{
+  "labwareID": "Labware ID",
+  "name": "Name",
+  "barcode": "Barcode",
+  "listOfEvents": "List of events",
+  "currentPhase": "Current phase",
+  "processStatus": "Process status",
+  "processStatusDetail": "Process status detail",
+  "reviewStatus": "Review status",
+  "anaysisStatus": "Analysis status",
+  "analysisStatusDetails": "Analysis status details",
+  "reviewer": "Reviewer"
+}

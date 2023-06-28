@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: aims-x-dev-crt
+spec:
+  domains:
+    - x.dev.cellinobio.app

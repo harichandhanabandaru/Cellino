@@ -1,0 +1,104 @@
+extend type Query {
+  plates(
+    currentPhaseId: ID
+    reviewerIds: [ID]
+    page: Int
+    runIds: [ID]
+    size: Int
+    plateNameList: [String]
+    passageList: [String]
+  ): PaginatedPlates!
+  plate(id: ID!): Plate!
+  plateReviewers(page: Int, size: Int): PaginatedPlateReviewer!
+  plateContext(id: ID!): JSON
+}
+
+extend type Mutation {
+  updatePlate(id: ID!, ops: [PatchOperation!]!): Plate
+  assignReviewerToPlates(plateIds: [ID!]!, userId: ID!): StatusMessage
+  unassignReviewerToPlate(plateId: ID!, userId: ID!): StatusMessage
+}
+
+type StatusMessage {
+  status: String
+  message: String
+}
+
+type PaginatedPlateReviewer {
+  content: [PlateReviewer]!
+  pageInfo: PageInformation!
+}
+
+type PlateReviewer {
+  user: User
+  plate: [PlateBasicDetails]
+}
+
+type PlateBasicDetails {
+  id: ID
+  name: String
+  runId: ID
+  runName: String
+}
+
+type PaginatedPlates {
+  content: [Plate]!
+  pageInfo: PageInformation!
+}
+
+type Plate {
+  id: ID!
+  reviewStatus: ReviewStatus
+  processStatus: ProcessStatus
+  assigneeId: ID
+  currentPhaseId: ID
+  run: Run
+  assignee: User
+  barcode: String
+  labware: Labware
+  analysisStatus: AnalysisStatus
+  analysisStatusDetail: String
+  eventIds: [ID]
+  plateStatus: PlateStatus
+  processStatusDetail: String
+  processMetadata: ProcessMetaData
+  name: String
+  plateStatusReason: String
+  reviewers: [User]
+}
+
+type PageInformation {
+  page: Int
+  totalElements: Int
+  size: Int
+}
+
+type Labware {
+  id: ID!
+  name: String
+  labwareType: String
+  attributes: JSON
+  vendorId: String
+  manufacturerId: String
+  createdBy: String
+  createdAt: String
+  modifiedBy: String
+  modifiedAt: String
+  isActive: Boolean
+}
+
+type ProcessMetaData {
+  downSelectionDay: Int
+  passage_number: Int
+}
+
+type RunPlate {
+  content: [RunPlateContent]!
+  pageInfo: PageInformation!
+}
+
+type RunPlateContent {
+  plateId: ID!
+  runId: ID!
+  phaseId: ID!
+}

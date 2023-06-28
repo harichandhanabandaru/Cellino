@@ -1,0 +1,12 @@
+resources:
+  - ../base
+
+secretGenerator:
+  - name: run-mgmt-svc
+    behavior: replace
+    envs:
+    - developers-secrets.env
+
+patches:
+  - hpa.yaml
+  - deployment.yaml

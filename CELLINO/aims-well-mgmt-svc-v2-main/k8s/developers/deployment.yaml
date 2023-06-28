@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: well-mgmt-svc-v2
+  labels:
+    app.kubernetes.io/name: well-mgmt-svc-v2
+spec:
+  template:
+    spec:
+      containers:
+        - name: aims-well-mgmt-svc-v2
+          image: us-central1-docker.pkg.dev/project-aims-dev/docker-registry-aims-dev/aims-well-mgmt-svc-v2

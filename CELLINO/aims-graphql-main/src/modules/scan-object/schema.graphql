@@ -1,0 +1,62 @@
+extend type Query {
+  scanObjects(
+    imageAnalysisRequestId: ID!
+    imageEventId: ID!
+  ): PaginatedScanObject!
+
+  scanObjectMetrics(imageEventId: ID): [ScanObjectMetrics]
+}
+
+extend type Mutation {
+  createScanObject(scanObjectData: CreateScanObjectRequest!): ScanObject
+
+  updateScanObject(
+    id: ID!
+    interiors: [[PointInput]]!
+    exterior: [PointInput]!
+    imageEventId: ID!
+  ): ScanObject
+
+  deleteScanObject(id: ID!) : StatusMessage
+}
+
+input CreateScanObjectRequest {
+  imageSettingId: ID!
+  imageEventId: ID!
+  name: String
+  imageAnalysisRequestId: ID
+  color: String
+  exterior: [PointInput]!
+  interiors: [[PointInput]]!
+  attributes: JSON
+}
+
+input PointInput {
+  x: Float
+  y: Float
+}
+
+type PaginatedScanObject {
+  content: [ScanObject]
+  pageInfo: PageInformation
+}
+
+type PageInformation {
+  page: Int
+  totalElements: Int
+  size: Int
+}
+
+type ScanObject {
+  id: ID!
+  name: String!
+  imageAnalysisRequest: ImageAnalysisRequest
+  imageEvent: ImageEvent
+  outline: JSON
+  attributes: JSON
+}
+
+type ScanObjectMetrics {
+  imageAnalysisRequest: ImageAnalysisRequest!
+  count: Int!
+}

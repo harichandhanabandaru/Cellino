@@ -1,0 +1,103 @@
+{
+  "name": "aims_run_management",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "env-cmd -f .env.local nest start",
+    "local": "env-cmd -f .env.local nest start --watch",
+    "start:dev": "nest start --watch",
+    "start:debug": "env-cmd -f .env.local nest start --debug --watch",
+    "start:prod": "node dist/src/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "tap --no-timeout --node-arg=--require=ts-node/register --coverage-report=lcov src/**/*.spec.ts --no-browser",
+    "test:cov": "tap --no-timeout --node-arg=--require=ts-node/register --coverage-report=cobertura",
+    "generate:migrations": "env-cmd -f .env typeorm migration:generate src/migrations/Migration -d dist/typeorm-cli.config --pretty",
+    "run:migrations": "env-cmd -f .env typeorm migration:run -d dist/typeorm-cli.config"
+  },
+  "dependencies": {
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/static": "^6.8.0",
+    "@fastify/swagger": "^8.3.0",
+    "@nestjs/common": "^9.2.1",
+    "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.2.1",
+    "@nestjs/platform-express": "^9.2.1",
+    "@nestjs/platform-fastify": "^9.2.1",
+    "@nestjs/swagger": "^6.1.4",
+    "@nestjs/terminus": "^9.1.4",
+    "@nestjs/typeorm": "^9.0.1",
+    "cache-manager": "^4.1.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "fast-json-patch": "^3.1.1",
+    "fastify": "^4.12.0",
+    "fastify-swagger": "^5.2.0",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0",
+    "typeorm": "^0.3.11"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.1.9",
+    "@nestjs/schematics": "^9.0.4",
+    "@nestjs/testing": "^9.2.1",
+    "@types/express": "^4.17.16",
+    "@types/jest": "27.5.0",
+    "@types/node": "^18.11.18",
+    "@types/supertest": "^2.0.11",
+    "@types/tap": "^15.0.7",
+    "@types/uuid": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.3",
+    "jest": "28.0.3",
+    "lint-staged": "^13.1.1",
+    "prettier": "^2.8.3",
+    "source-map-support": "^0.5.20",
+    "supertest": "^6.1.3",
+    "tap": "^16.3.4",
+    "ts-jest": "28.0.1",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "4.0.0",
+    "typescript": "^4.9.4"
+  },
+  "ts-node": {
+    "files": true
+  },
+  "tap": {
+    "branches": 50,
+    "functions": 50,
+    "lines": 50,
+    "statements": 50
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowJs": false
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

@@ -1,0 +1,24 @@
+extend type Query {
+  users(page: Int, size: Int): [User]!
+  userProfile: User
+}
+
+type User {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  role: Role
+}
+
+type Role {
+  id: ID!
+  name: String
+  rule: [Rule]
+}
+
+type Rule {
+  subject: [String]
+  action: [String]
+  inverted: Boolean
+}

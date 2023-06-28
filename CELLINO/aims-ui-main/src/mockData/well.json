@@ -1,0 +1,93 @@
+{
+  "id": 11931,
+  "position": "C8",
+  "zarrUrl": "http://storage.googleapis.com/cellino/11931-288-261/",
+  "reviewStatus": "IN_PROGRESS",
+  "plateId": 1434,
+  "imageMeasurements": [
+    {
+      "timeStamp": "2022-05-02T22:00:09.832Z",
+      "eventImageId": 112094,
+      "confluence": 0.5515534590090396,
+      "interiorConfluence": 0.5745814843183583,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_112094.jpg"
+    },
+    {
+      "timeStamp": "2022-05-03T21:41:43.273Z",
+      "eventImageId": 112325,
+      "confluence": 0.7552493659265211,
+      "interiorConfluence": 0.4550908984660913,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_112325.jpg"
+    },
+    {
+      "timeStamp": "2022-05-04T21:41:11.562Z",
+      "eventImageId": 112930,
+      "confluence": 0.891078510214709,
+      "interiorConfluence": 0.07324558606546527,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_112930.jpg"
+    },
+    {
+      "timeStamp": "2022-05-05T21:41:51.729Z",
+      "eventImageId": 113284,
+      "confluence": 0.6946773859883297,
+      "interiorConfluence": 0.9126211752727806,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_113284.jpg"
+    },
+    {
+      "timeStamp": "2022-05-06T21:43:00.482Z",
+      "eventImageId": 113676,
+      "confluence": 0.8745065367119129,
+      "interiorConfluence": 0.3902285497610778,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_113676.jpg"
+    },
+    {
+      "timeStamp": "2022-05-07T21:43:48.099Z",
+      "eventImageId": 113997,
+      "confluence": 0.7364430431016133,
+      "interiorConfluence": 0.7279448980616221,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_113997.jpg"
+    },
+    {
+      "timeStamp": "2022-05-08T21:44:28.663Z",
+      "eventImageId": 114375,
+      "confluence": 0.008417251044544827,
+      "interiorConfluence": 0.435972671909449,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_114375.jpg"
+    },
+    {
+      "timeStamp": "2022-05-10T00:19:57.272Z",
+      "eventImageId": 114909,
+      "confluence": 0.6957421152043597,
+      "interiorConfluence": 0.8957367207780076,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_114909.jpg"
+    },
+    {
+      "timeStamp": "2022-05-10T23:02:59.582Z",
+      "eventImageId": 115227,
+      "confluence": 0.5888482043188634,
+      "interiorConfluence": 0.21345952401441526,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_115227.jpg"
+    },
+    {
+      "timeStamp": "2022-05-11T21:42:07.275Z",
+      "eventImageId": 115547,
+      "confluence": 0.21473021380977375,
+      "interiorConfluence": 0.9628573610099693,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_115547.jpg"
+    },
+    {
+      "timeStamp": "2022-05-12T11:55:46.186Z",
+      "eventImageId": 115837,
+      "confluence": 0.46714660109834805,
+      "interiorConfluence": 0.6000708455490293,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_115837.jpg"
+    },
+    {
+      "timeStamp": "2022-05-12T14:08:42.510Z",
+      "eventImageId": 116050,
+      "confluence": 0.4109484587011809,
+      "interiorConfluence": 0.1784440116083259,
+      "thumbnailUrl": "https://storage.googleapis.com/cellino/thumbnails/thumbnail_116050.jpg"
+    }
+  ]
+}

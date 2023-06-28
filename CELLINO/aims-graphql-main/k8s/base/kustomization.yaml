@@ -1,0 +1,16 @@
+resources:
+  - service.yaml
+  - deployment.yaml
+  - hpa.yaml
+
+configMapGenerator:
+  - name: graphql-cnfgmp
+    envs:
+      - graphql-cnfgmp.env
+secretGenerator:
+  - name: graphql
+    envs:
+      - secrets.env
+
+generatorOptions:
+  disableNameSuffixHash: true

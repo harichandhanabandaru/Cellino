@@ -1,0 +1,187 @@
+{
+  "name": "aims_ui",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.12",
+    "yarn": ">= 1.22.0"
+  },
+  "dependencies": {
+    "@godaddy/terminus": "^4.11.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build && rm build/mockServiceWorker.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install",
+    "dev": "env-cmd -f .env.local yarn run start",
+    "local": "env-cmd -f .env.local yarn run start --watch",
+    "watch": "yarn test --coverage --verbose --watchAll",
+    "gql:codegen": "graphql-codegen --config codegen-gql.yml",
+    "test:ci": "yarn test --coverage --watchAll=false --testResultsProcessor ./node_modules/jest-sonar-reporter",
+    "lint": "eslint src/**/*.{ts,tsx,js,jsx} --fix",
+    "lint:fix": "eslint . --fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.7.3",
+    "@deck.gl/core": "^8.8.20",
+    "@deck.gl/react": "^8.8.20",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@graphql-codegen/cli": "^2.16.1",
+    "@graphql-codegen/fragment-matcher": "^3.3.3",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript-operations": "^2.4.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.14",
+    "@hms-dbmi/viv": "^0.13.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.114",
+    "@mui/material": "^5.11.2",
+    "@mui/x-data-grid": "^5.17.17",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/node-logger": "^6.4.19",
+    "@storybook/preset-create-react-app": "^4.1.0",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@testing-library/user-event": "^14.0.1",
+    "@types/jest": "^29.2.4",
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window-infinite-loader": "^1.0.6",
+    "clsx": "^1.2.1",
+    "deck.gl": "^8.8.20",
+    "env-cmd": "^10.1.0",
+    "graphql": "^16.6.0",
+    "husky": "^8.0.2",
+    "i18next": "^22.4.6",
+    "jest-sonar-reporter": "^2.0.0",
+    "lint-staged": "^13.1.0",
+    "msw": "^0.49.2",
+    "nebula.gl": "^1.0.4",
+    "notistack": "^2.0.8",
+    "prettier": "^2.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^1.3.0",
+    "react-i18next": "^12.1.1",
+    "react-router-dom": "^6.6.1",
+    "react-scripts": "^5.0.1",
+    "react-virtualized-auto-sizer": "^1.0.7",
+    "react-window": "^1.8.8",
+    "react-window-infinite-loader": "^1.0.8",
+    "storybook-addon-designs": "^6.2.1",
+    "typescript": "^4.9.4",
+    "web-vitals": "^3.1.0",
+    "webpack": "^5.70.0",
+    "zarr": "^0.6.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/index.js",
+      "!src/index.tsx",
+      "!src/mocks/*",
+      "!src/setupTests.js",
+      "!src/setupTests.ts",
+      "!src/reportWebVitals.ts",
+      "!src/react-app-env.d.ts",
+      "!src/**/*stories.js",
+      "!src/**/*stories.tsx",
+      "!src/**/tests/*.js",
+      "!src/**/tests/*.tsx",
+      "!src/tests/**/*.js",
+      "!src/tests/**/*.ts",
+      "!src/components/organisms/ZarrImageViewer/**/*.{ts, tsx}",
+      "!src/components/organisms/ZarrImageViewer/index.tsx"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 40,
+        "lines": 40,
+        "statements": 40
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "clearMocks": true,
+    "resetMocks": false
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": ".",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ],
+    "server/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}

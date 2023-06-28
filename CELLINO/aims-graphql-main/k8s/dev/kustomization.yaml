@@ -1,0 +1,18 @@
+resources:
+  - ../base
+
+namespace: aims-dev
+
+configMapGenerator:
+  - name: graphql-cnfgmp
+    behavior: merge
+    envs:
+      - graphql-cnfgmp.env
+
+secretGenerator:
+  - name: graphql
+    behavior: replace
+    envs:
+      - dev-secrets.env
+patches:
+  - hpa.yaml

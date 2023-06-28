@@ -1,0 +1,13 @@
+resources:
+  - ../base
+
+namespace: aims-qa
+
+secretGenerator:
+  - name: graphql
+    behavior: replace
+    envs:
+      - qa-secrets.env
+  
+patches:
+  - hpa.yaml

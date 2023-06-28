@@ -1,0 +1,6 @@
+**/apollo
+**/assets
+**/generated
+node_modules/
+dist/
+src/__generated__

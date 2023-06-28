@@ -1,0 +1,10 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: user-mgmt-svc
+  labels:
+    app.kubernetes.io/name: user-mgmt-svc
+    envirnoment: developers
+spec:
+  minReplicas: 1
+  maxReplicas: 1

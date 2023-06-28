@@ -1,0 +1,12 @@
+{
+  "id": "Workflow ID",
+  "type": "Type",
+  "version": "Version",
+  "name": "Name",
+  "objective": "Objective",
+  "phases": "Phases",
+  "createdBy": "Created by",
+  "createdAt": "Created at",
+  "modifiedBy": "Modified by",
+  "modifiedAt": "Modified At"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Name",
+  "quality": "Quality",
+  "clonality": "Clonality",
+  "selected": "Selected",
+  "noOfClusters": "Number of clusters",
+  "type": "Type"
+}

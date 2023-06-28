@@ -1,0 +1,11 @@
+resources:
+  - ../base
+
+namespace: aims-dev
+configMapGenerator:
+  - name: ui
+    behavior: merge
+    envs:
+      - ui.env
+patches:
+  - hpa.yaml

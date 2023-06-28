@@ -1,0 +1,104 @@
+type Query {
+  defaultQuery: String
+}
+
+type Mutation {
+  defaultMutation: String
+}
+
+type PageInformation {
+  totalElements: Int
+  page: Int
+  size: Int
+}
+
+scalar JSON
+
+input PatchOperation {
+  """
+  operaton to perform in patch
+  """
+  op: String!
+  """
+  path of the field that is being patched
+  """
+  path: String!
+  """
+  value of the field that is being patched
+  """
+  value: JSON
+}
+
+enum WellReviewStatus {
+  NOTSTARTED
+  INREVIEW
+  PAUSED
+  COMPLETED
+}
+
+enum ReviewStatus {
+  CONFIRMED
+  INPROGRESS
+  NOTSTARTED
+}
+
+enum AnalysisStatus {
+  INQUEUE
+  INPROGRESS
+  FAILURE
+  SUCCESS
+}
+
+enum ProcessStatus {
+  IMAGINGQUEUE
+  IMAGING
+  SCANNINGQUEUE
+  SCANNING
+  ININCUBATOR
+  DROPPED
+  RETIRED
+}
+
+enum PlateStatus {
+  KEEP
+  DROP
+}
+
+enum CloneReviewStatus {
+  INREVIEW
+  COMPLETED
+}
+
+enum RunStatus {
+  INPROGRESS
+  FINISHED
+  ABORTED
+}
+
+enum PhenoType {
+  PREIPSC
+  IPSC
+  IPSCDIFF
+  FIBROBLAST
+  RPE
+  UNKNOWN
+}
+
+enum ClusterType {
+  MANUAL
+  SYSTEMGENERATED
+  EDITED
+}
+
+enum Quality {
+  GOOD
+  MEDIUM
+  POOR
+  UNKNOWN
+}
+
+enum Clonality {
+  UNKNOWN
+  POLYCLONAL
+  MONOCLONAL
+}

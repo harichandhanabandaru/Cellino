@@ -1,0 +1,13 @@
+node_modules/
+dist/
+k8s/
+deploy/
+.gitignore
+Dockerfile
+README.md
+.dockerignore
+cloudbuild.yaml
+.env.local
+skaffold.yaml
+yarn-debug.log*
+yarn-error.log*

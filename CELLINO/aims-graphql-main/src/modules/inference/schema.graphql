@@ -1,0 +1,12 @@
+type Inference {
+  id: ID!
+  name: String
+  artifactPath: JSON
+  metadata: JSON
+  protocol: Protocol
+  imageSetting: ImageSetting
+}
+
+extend type Query {
+  inferences(imageEventId: ID!): [Inference]!
+}

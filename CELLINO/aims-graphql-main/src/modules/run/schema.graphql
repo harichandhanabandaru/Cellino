@@ -1,0 +1,59 @@
+extend type Query {
+    runs(
+      ids: ID
+      nameLike: String
+      page: Int
+      size: Int
+      status: RunStatus
+    ): PaginatedRun!
+    run(id: ID!): Run!
+    runStatusCount: [RunStatusCountRes]!
+  }
+
+  type PaginatedRun {
+    content: [Run!]!
+    pageInfo: RunPageInformation
+  }
+
+  type Run {
+    id: ID!
+    name: String!
+    objective: String
+    summary: String
+    metadata: String
+    creatorId: String
+    partner: Partner
+    cloneReviewStatus: CloneReviewStatus
+    runDay: String
+    seedingDay: String
+    partnerId: ID
+    phaseId: ID
+    workflowId: ID
+    processId: ID
+    status: RunStatus
+    runMetric: RunMetric
+    workflow: WorkflowDetails
+    runOwner: User
+    runReviewer: [User]
+  }
+
+  type RunMetric {
+    runId: ID
+    wellsCount: Int
+    platesCount: Int
+    activePlatesCount: Int
+    activeWellsCount: Int
+    originalPlateCount: Int
+    originalWellCount: Int
+  }
+
+  type RunPageInformation {
+    page: Int
+    totalElements: Int
+    size: Int
+  }
+
+  type RunStatusCountRes {
+    runStatus: String
+    count: Int
+  }

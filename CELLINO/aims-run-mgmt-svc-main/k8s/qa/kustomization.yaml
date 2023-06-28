@@ -1,0 +1,12 @@
+resources:
+  - ../base
+
+namespace: aims-qa
+secretGenerator:
+  - name: run-mgmt-svc
+    behavior: merge
+    envs:
+    - qa-secrets.env
+
+patches:
+  - hpa.yaml

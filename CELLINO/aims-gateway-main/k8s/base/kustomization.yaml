@@ -1,0 +1,9 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - hpa.yaml
+
+configMapGenerator:
+  - name: gateway
+    envs:
+      - urls.env

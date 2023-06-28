@@ -1,0 +1,10 @@
+resources:
+  - deployment.yaml
+  - hpa.yaml
+  - service.yaml
+secretGenerator:
+- name: user-mgmt-svc
+  envs:
+    - secrets.env
+generatorOptions:
+  disableNameSuffixHash: true

@@ -1,0 +1,115 @@
+extend type Query {
+  Clusters(
+    imageAnalysisRequestId: ID
+    imageEventId: ID!
+    page: Int
+    size: Int
+    colonyIds: [ID]
+    freeClusters: Boolean
+  ): PaginatedClusters
+  clusterMetrics(imageEventId: ID, freeClusters: Boolean): [ClusterMetrics]
+}
+
+extend type Mutation {
+  createCluster(clusterData: CreateClusterRequest!): Cluster
+  updateCluster(id: ID!, ops: [PatchOperation!]!): Cluster
+  updateClusterOutline(
+    id: ID!
+    interiors: [[PointInput]]!
+    exterior: [PointInput]!
+    imageEventId: ID!
+  ): Cluster
+}
+
+type PaginatedClusters {
+  content: [Cluster]
+  pageInfo: PageInformation
+}
+
+type ClusterMetrics {
+  imageAnalysisRequest: ImageAnalysisRequest!
+  count: Int!
+}
+
+input CreateClusterRequest {
+  imageEventId: ID!
+  exterior: [PointInput]
+  interiors: [[PointInput]]
+  colonyId: ID
+  name: String
+  quality: Quality
+  color: String
+  imageAnalysisRequestId: ID
+}
+
+type Cluster {
+  id: ID!
+  colony: Colony
+  name: String!
+  nameId: String
+  well: Well
+  parents: [Int]
+  clonality: Clonality
+  quality: Quality
+  imageEvent: ImageEvent
+  attributes: Attributes
+  outline: JSON
+  type: ClusterType
+  phenoType: PhenoType
+  imageAnalysisRequest: ImageAnalysisRequest
+}
+
+type Attributes {
+  circularity: Float
+  area: Float
+}
+
+type Outline {
+  boundingBox: BoundingBox
+  exterior: [Point]
+  interiors: [[Point]]
+  color: String
+  center: Center
+}
+
+input OutlineInput {
+  boundingBox: BoundingBoxInput
+  exterior: [PointInput]
+  interiors: [[PointInput]]
+  color: String
+  center: CenterInput
+}
+
+type Point {
+  x: Float
+  y: Float
+}
+
+input PointInput {
+  x: Float
+  y: Float
+}
+
+type BoundingBox {
+  xmin: Float
+  xmax: Float
+  ymin: Float
+  ymax: Float
+}
+
+input BoundingBoxInput {
+  xmin: Float
+  xmax: Float
+  ymin: Float
+  ymax: Float
+}
+
+type Center {
+  x: Float
+  y: Float
+}
+
+input CenterInput {
+  x: Float
+  y: Float
+}

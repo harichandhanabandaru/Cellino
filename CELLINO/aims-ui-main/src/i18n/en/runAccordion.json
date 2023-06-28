@@ -1,0 +1,18 @@
+{
+  "runName": "Run name",
+  "partner": "For",
+  "runId": "Run ID",
+  "objective": "Objective",
+  "summary": "Summary",
+  "creator": "Creator",
+  "owner": "Owner",
+  "reviewers": "Reviewers",
+  "runDay": "Run day",
+  "startDay": "Start day",
+  "runStatus": "Run status",
+  "cloneReviewStatus": "Clone review status",
+  "workFlowID": "Workflow ID",
+  "phase": "Phase",
+  "currentPhase": "Current phase",
+  "plates": "Plates"
+}

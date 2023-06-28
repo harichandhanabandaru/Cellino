@@ -1,0 +1,73 @@
+extend type Query {
+  wells(plateId: ID!): [Well]!
+  well(wellId: ID!): Well!
+}
+
+extend type Mutation {
+  updateWellStatus(wellId: ID!, ops: [PatchOperation!]!): Well
+}
+
+type Well {
+  id: ID
+  name: String
+  position: String!
+  artifactPath: JSON
+  zarrUrl: String
+  reviewStatus: WellReviewStatus
+  plateId: ID!
+  status: String!
+  statusReason: String
+  processStatus: WellProcessStatus
+  analysisStatus: WellAnalysisStatus
+  analysisStatusDetail: String
+  processStatusDetail: String
+  reviewers: [User]
+}
+
+enum WellProcessStatus {
+  IMAGINGQUEUE
+  IMAGING
+  SCANNINGQUEUE
+  SCANNING
+  DROPPED
+  RETIRED
+}
+
+enum WellAnalysisStatus {
+  INQUEUE
+  INPROGRESS
+  FAILURE
+  SUCCESS
+}
+
+type ImageMeasurements {
+  imageEventId: ID!
+  createdAt: String
+  thumbnailUrl(width: Int): String
+  measurements: Measurements
+  eventId: ID
+  startedAt: String
+}
+
+type Measurements {
+  cells: Int
+  colonies: Int
+  occupancy: Float
+  confluence: Float
+  contaminationScore: Float
+  interiorConfluence: Float
+  nonLiveCellOccupancy: Float
+}
+
+type Thumbnail {
+  bucket: String
+  project: String
+  datatype: String
+  blob_path: String
+  dimension: Dimension
+}
+
+type Dimension {
+  width: Int
+  height: Int
+}

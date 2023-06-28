@@ -1,0 +1,16 @@
+extend type Query {
+  workflowDetails(id: ID!): WorkflowDetails
+}
+
+type WorkflowDetails {
+  id: ID!
+  type: String
+  version: String
+  name: String
+  objective: String
+  createdBy: String
+  createdAt: String
+  modifiedBy: String
+  modifiedAt: String
+  phases: [Phase]
+}

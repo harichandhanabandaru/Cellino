@@ -1,0 +1,17 @@
+.git
+.husky
+dist
+k8s
+node_modules
+.dockerignore
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitignore
+cloudbuild.yaml
+Dockerfile
+README.md
+skaffold.yaml
+sonar-project.properties
+.npmrc
+npm-debug.log

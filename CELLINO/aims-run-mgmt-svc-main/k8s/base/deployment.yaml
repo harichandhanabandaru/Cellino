@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: run-mgmt-svc
+  labels:
+    app.kubernetes.io/name: run-mgmt-svc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: run-mgmt-svc
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: run-mgmt-svc
+    spec:
+      initContainers:
+        - name: run-mgmt-svc-migration
+          image: aims-run-mgmt-svc
+          command: [ 'npx', 'typeorm', 'migration:run', '-d', 'typeorm-cli.config' ]
+          envFrom:
+            - secretRef:
+                name: run-mgmt-svc
+      containers:
+        - name: run-mgmt-svc
+          image: aims-run-mgmt-svc
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: run-mgmt-svc
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 60
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 125Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 125Mi
+              memory: 512Mi

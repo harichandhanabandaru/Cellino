@@ -1,0 +1,21 @@
+type ImageSetting {
+  id: ID!
+  name: String!
+  channelType: ChannelType
+  magnification: String
+  colorMap: String
+  metadata: JSON!
+  numberOfZStep: Float
+  zarray: [Float!]!
+  zmin: Float
+  zmax: Float
+}
+enum ChannelType {
+  BRT
+  FLOUR
+  VIRTUAL
+}
+
+extend type Query {
+  imageSettings(id: ID!): ImageSetting!
+}

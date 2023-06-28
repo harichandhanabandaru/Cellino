@@ -1,0 +1,49 @@
+extend type Query {
+  imageEvent(id: ID!): ImageEvent!
+  imageEvents(
+    eventId: ID
+    wellId: ID
+    analysisStatus: ImageEventAnalysisStatus
+    isBaseImage: Boolean
+  ): [ImageEvent]
+}
+
+extend type Mutation {
+  updateImageEvent(imageEventId: ID!, ops: [PatchOperation!]!): ImageEvent
+}
+
+type GroupImageEvent {
+  eventId: ID
+  imageEvents: [ImageEvent]
+}
+
+type ImageEvent {
+  id: ID
+  name: String
+  event: Event
+  derivedArtifacts(width: Int): ImageEventThumbnail
+  artifactPath: JSON
+  metadata: JSON
+  startedAt: String
+  completedAt: String
+  protocol: Protocol
+  imageSetting: ImageSetting
+  imageMeasurements: JSON
+  well: Well
+  reviewStatus: WellReviewStatus
+}
+
+type ImageEventThumbnail {
+  bucket: String
+  datatype: String
+  blob_path: String
+  height: Int
+  width: Int
+}
+
+enum ImageEventAnalysisStatus {
+  INQUEUE
+  INPROGRESS
+  FAILURE
+  SUCCESS
+}

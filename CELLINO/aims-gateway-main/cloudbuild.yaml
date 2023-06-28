@@ -1,0 +1,35 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+    - -c
+    - |
+      export DOCKER_BUILDKIT=1
+      
+      docker pull $_IMAGE_NAME:latest
+      docker build -t $_IMAGE_NAME:$COMMIT_SHA \
+              -t $_IMAGE_NAME:latest \
+              --cache-from $_IMAGE_NAME:latest \
+              .
+      docker push --all-tags $_IMAGE_NAME
+  
+  - id: Deploy to gke cluster 
+    name: 'google/cloud-sdk:latest'
+    entrypoint: 'sh'
+    args:
+    - -xe
+    - -c
+    - |
+      gcloud beta deploy releases create gateway-release-${SHORT_SHA} \
+                          --delivery-pipeline aims-gateway \
+                          --region ${_REGION} \
+                          --description "$(git log -1  --pretty='%s')" \
+                          --images=aims-gateway=$_IMAGE_NAME:$COMMIT_SHA \
+                          --annotations "commit_ui=$COMMIT_SHA"
+
+timeout: 3600s 
+options:
+  logging: GCS_ONLY
+logsBucket: gs://aims_cloud_build_logs
+substitutions:
+  _IMAGE_NAME: us-central1-docker.pkg.dev/project-aims-dev/docker-registry-aims-dev/aims-gateway
